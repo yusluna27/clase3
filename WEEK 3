@@ -1,0 +1,118 @@
+package javaapplication6;
+import javax.swing.JOptionPane;
+
+public class JavaApplication6 {
+
+    public static void main(String[] args) {
+        // EJERCICIO 1 - Hacer rectángulo
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 10; j++) {
+                System.out.print("@");
+            }
+            System.out.println();
+        }
+        
+        // EJERCICIO 2 - Tabla de multiplicar
+        String numStr = JOptionPane.showInputDialog(null, "Ingrese un número:");
+        int num = Integer.parseInt(numStr);
+        
+        String tabla = "Tabla de multiplicar del " + num + ":\n";
+        for (int i = 1; i <= 10; i++) {
+            tabla += num + " x " + i + " = " + (num * i) + "\n";
+        }
+        
+        JOptionPane.showMessageDialog(null, tabla);
+        
+        // EJERCICIO 3 - Árbol degradado
+        int filas = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el número de filas:"));
+        String resultado = "";
+        
+        for (int i = 1; i <= filas; i++) {
+            for (int j = 1; j <= i; j++) {
+                resultado += "*";
+            }
+            resultado += "\n";
+        }
+        JOptionPane.showMessageDialog(null, resultado);
+        
+        // EJERCICIO 4 - Valores entre 30 y 20
+        for (int i = 20; i <= 30; i++) {
+            int cuadrado = i * i;
+            System.out.println(i + " al cuadrado es " + cuadrado);
+        }
+        
+        // EJERCICIO 5 - Notas y promedio de estudiantes
+        int cantidadEstudiantes = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de estudiantes: "));
+        int[] notas = new int [cantidadEstudiantes];// new para crear un nuevo arreglo de enteros con la longitud especificada por cantidadEstudiantes.
+        int sumaNotas = 0;
+        int notaMayor = 0;
+        int notaMenor = 100;
+        int cantidadAprobados = 0;
+        
+        for (int i = 0; i < cantidadEstudiantes; i++) {
+            String notaString = JOptionPane.showInputDialog("Ingrese la nota para el estudiante " + (i+1) + ": ");
+            int nota = Integer.parseInt(notaString);
+            
+            notas[i] = nota;
+            sumaNotas += nota;
+            
+            if (nota > notaMayor) {
+                notaMayor = nota;
+            }
+            
+            if (nota < notaMenor) {
+                notaMenor = nota;
+            }
+            
+            if (nota >= 70) {
+                cantidadAprobados++;
+            }
+    }
+    double promedioNotas = (double) sumaNotas / cantidadEstudiantes;
+
+    JOptionPane.showMessageDialog(null, "El promedio de notas es: " + promedioNotas
+                            + "\nLa nota mayor es: " + notaMayor
+                            + "\nLa nota menor es: " + notaMenor
+                            + "\nLa cantidad de estudiantes aprobados es: " + cantidadAprobados);
+
+        // EJERCICIO 6 - Notas de estudiantes en caso de que fueran negativas
+        cantidadEstudiantes = 0;
+        sumaNotas = 0;
+        notaMayor = 0;
+        notaMenor = 100;
+        cantidadAprobados = 0;
+
+        while (true) {
+            String notaString = JOptionPane.showInputDialog("Ingrese la nota para el estudiante (Ingrese un número negativo para salir):");
+                    int nota = Integer.parseInt(notaString);
+
+                if (nota < 0) {
+            break; // Salir del bucle si la nota es negativa
+        }
+
+        sumaNotas += nota;
+
+        if (nota > notaMayor) {
+            notaMayor = nota;
+        }
+        if (nota < notaMenor) {
+            notaMenor = nota;
+        }
+        if (nota >= 70) {
+            cantidadAprobados++;
+        }
+
+        cantidadEstudiantes++;
+        }          
+        promedioNotas = (double) sumaNotas / cantidadEstudiantes;   
+        
+        JOptionPane.showMessageDialog(null, "El promedio de notas es: " + promedioNotas
+            + "\nLa nota mayor es: " + notaMayor
+            + "\nLa nota menor es: " + notaMenor
+            + "\nLa cantidad de estudiantes aprobados es: " + cantidadAprobados);
+}
+
+}
+
+
+    
